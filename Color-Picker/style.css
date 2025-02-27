@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Mulish", serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 80px;
+
+  transition: all 0.4s;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Buttons */
+#green {
+  background-color: green;
+  color: #fff;
+}
+
+#red {
+  background-color: red;
+  color: #fff;
+}
+
+#blue {
+  background-color: blue;
+  color: #fff;
+}
+
+#random {
+  background-color: #333;
+  color: #fff;
+}
