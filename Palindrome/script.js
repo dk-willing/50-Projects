@@ -12,7 +12,7 @@ function check(e) {
   const value = input.value;
 
   if (value === "" || value.trim() === "") {
-    alert("Please add a text");
+    showAlert("alert show error", "Please add a text!");
     return;
   }
 
@@ -21,12 +21,27 @@ function check(e) {
   const reversedString = reversed.join("");
 
   if (reversedString.toLowerCase() === value.toLowerCase()) {
-    alert("This is a palindrome");
+    showAlert("alert show success", "This is a palindrome!");
   } else {
-    alert("This is not a palindrome");
+    showAlert("alert show error", "This is not a palindrome!");
   }
 
   input.value = "";
+}
+
+function showAlert(classes, text) {
+  const div = document.createElement("div");
+  div.className = classes;
+
+  const p = document.createElement("p");
+  p.appendChild(document.createTextNode(text));
+  div.appendChild(p);
+
+  document.querySelector(".alertEl").appendChild(div);
+
+  setTimeout(() => {
+    div.remove();
+  }, 2000);
 }
 
 form.addEventListener("submit", check);
