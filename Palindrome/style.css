@@ -6,6 +6,7 @@
 
 body {
   font-family: "Mulish", serif;
+  text-align: center;
 
   display: flex;
   flex-direction: column;
@@ -48,6 +49,41 @@ h1 {
 }
 
 .btn:hover {
-  background-color: rgb(112, 156, 47);
+  background-color: #709c2f;
   color: white;
+}
+
+.alertEl {
+  width: 300px;
+  height: 100px;
+}
+
+.alert {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bolder;
+  padding: 10px 40px;
+  border-radius: 8px;
+}
+
+.success {
+  background-color: #1bae1b;
+  border: 1px solid #1bae1b;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.error {
+  background-color: #f9304e;
+  border: 1px solid #f9304e;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }
