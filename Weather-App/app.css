@@ -144,3 +144,14 @@ p {
   padding: 1.2rem 2.4rem;
   margin-top: 4rem;
 }
+
+@media (max-width: 32em) {
+  .container {
+    padding: 2rem 3rem;
+  }
+
+  .error-msg p {
+    padding: 1.2rem 1.4rem;
+    width: 70%;
+  }
+}
