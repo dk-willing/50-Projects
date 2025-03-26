@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+h1 > span {
+  color: #e03535;
+  text-transform: capitalize;
+}
+
+button {
+  background-color: teal;
+  color: #fff;
+  padding: 5px 30px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 4px;
+
+  transition: all 0.4s;
+}
+
+button:hover {
+  background-color: #033232;
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
