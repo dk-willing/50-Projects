@@ -1,46 +1,71 @@
-const time = document.getElementById("time");
-const startBtn = document.querySelector(".start");
-const stopBtn = document.querySelector(".stop");
-const resetBtn = document.querySelector(".reset");
+const hoursInput = document.querySelector("#hour");
+const minuteInput = document.querySelector("#minute");
+const secondsInput = document.querySelector("#seconds");
 
-let interval = null;
-let secondsElapsed = 0;
+const hoursOutput = document.querySelector("#hourOutput");
+const minuteOutput = document.querySelector("#minuteOutput");
+const secondsOutput = document.querySelector("#secondsOutput");
 
-function setTime() {
-  const minutes = Math.floor(secondsElapsed / 60);
-  const seconds = secondsElapsed % 60;
-  const hour = Math.floor(minutes / 60);
+const startTimerBtn = document.querySelector("#startTimer");
 
-  if (hour > 24) {
-    hour = 0;
+let targetTime;
+let timeInterval;
+
+const updateTimer = () => {
+  if (targetTime) {
+    const differenceInSeconds = Math.floor(targetTime - Date.now()) / 1000;
+
+    if (differenceInSeconds < 1) {
+      clearInterval(timeInterval);
+    }
+
+    const hour = Math.floor(differenceInSeconds / 3600);
+    const minute = Math.floor(differenceInSeconds / 60) % 60;
+    const seconds = Math.floor(differenceInSeconds % 60);
+
+    hoursOutput.innerHTML = `${hour} <span>hours<span>`;
+    minuteOutput.innerHTML = `${minute} <span>minutes</span>`;
+    secondsOutput.innerHTML = `${seconds} <span>seconds</span>`;
+  }
+};
+
+startTimerBtn.addEventListener("click", () => {
+  if (
+    hoursInput.value === "0" &&
+    minuteInput.value === "0" &&
+    secondsInput.value === "0"
+  ) {
+    alert("Kindly add a valid time");
     return;
   }
 
-  time.innerHTML = `${hour < 10 ? "0" + hour : hour}:${
-    minutes < 10 ? "0" + minutes : minutes
-  }:${seconds < 10 ? "0" + seconds : seconds}`;
+  const futureHours = parseInt(hoursInput.value);
+  const futureminutes = parseInt(minuteInput.value);
+  const futureSeconds = parseInt(secondsInput.value);
+
+  const date = new Date();
+  const currentHour = date.getHours();
+  const currentMinute = date.getMinutes();
+  const currentSecond = date.getSeconds();
+
+  date.setHours(currentHour + futureHours);
+  date.setMinutes(currentMinute + futureminutes);
+  date.setSeconds(currentSecond + futureSeconds);
+
+  targetTime = date.getTime();
+  localStorage.setItem("targetTime", targetTime);
+
+  updateTimer();
+
+  timeInterval = setInterval(updateTimer, 500);
+});
+
+const storedTargetTime = localStorage.getItem("targetTime");
+
+if (storedTargetTime) {
+  targetTime = storedTargetTime;
+  updateTimer();
+  timeInterval = setInterval(updateTimer, 500);
 }
 
-function timer() {
-  secondsElapsed++;
-  setTime();
-}
-
-function startClock() {
-  if (interval) stopClock();
-  interval = setInterval(timer, 1000);
-}
-
-function stopClock() {
-  clearInterval(interval);
-}
-
-function resetClock() {
-  stopClock();
-  secondsElapsed = 0;
-  setTime();
-}
-
-startBtn.addEventListener("click", startClock);
-stopBtn.addEventListener("click", stopClock);
-resetBtn.addEventListener("click", resetClock);
+updateTimer();
