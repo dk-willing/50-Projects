@@ -23,9 +23,15 @@ const updateTimer = () => {
     const minute = Math.floor(differenceInSeconds / 60) % 60;
     const seconds = Math.floor(differenceInSeconds % 60);
 
-    hoursOutput.innerHTML = `${hour} <span>hours<span>`;
-    minuteOutput.innerHTML = `${minute} <span>minutes</span>`;
-    secondsOutput.innerHTML = `${seconds} <span>seconds</span>`;
+    hoursOutput.innerHTML = `${
+      hour < 10 ? "0" + hour : hour
+    } <span>hours<span>`;
+    minuteOutput.innerHTML = `${
+      minute < 10 ? "0" + minute : minute
+    } <span>minutes</span>`;
+    secondsOutput.innerHTML = `${
+      seconds < 10 ? "0" + seconds : seconds
+    } <span>seconds</span>`;
   }
 };
 
@@ -58,6 +64,10 @@ startTimerBtn.addEventListener("click", () => {
   updateTimer();
 
   timeInterval = setInterval(updateTimer, 500);
+
+  secondsInput.value = "0";
+  hoursInput.value = "0";
+  minuteInput.value = "0";
 });
 
 const storedTargetTime = localStorage.getItem("targetTime");
