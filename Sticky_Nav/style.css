@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  padding: 20px;
+}
+
+main {
+  display: flex;
+  gap: 10px;
+}
+
+main nav {
+  position: relative;
+}
+
+main nav ul {
+  width: 8rem;
+  list-style: none;
+}
+
+main nav ul li {
+  padding: 10px;
+}
+
+main nav ul li a {
+  text-decoration: none;
+  padding: 10px;
+}
+
+section h2 {
+  margin-bottom: 10px;
+}
+
+section p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+section p:last-child {
+  margin-bottom: 40px;
+}
+
+nav a.active {
+  background-color: lightseagreen;
+  color: #fff;
+}
