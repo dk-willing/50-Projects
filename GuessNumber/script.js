@@ -1,6 +1,6 @@
 'use strict';
 
-const message = document.querySelector('.message');
+const messageEl = document.querySelector('.message');
 const scoreEl = document.querySelector('.score');
 const secretDigit = document.querySelector('.secretDigit');
 const playAgain = document.querySelector('.again');
@@ -11,13 +11,17 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
+const displayMessage = function (message) {
+  messageEl.textContent = message;
+};
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(input.value);
 
   if (!guess) {
-    message.textContent = '⛔ No Number!';
+    displayMessage('⛔ No Number!');
   } else if (guess === secretNumber) {
-    message.textContent = '🎉 Correct Guess!';
+    displayMessage('🎉 Correct Guess!');
     secretDigit.textContent = secretNumber;
 
     document.querySelector('body').style.backgroundColor = '#64b748';
@@ -28,21 +32,13 @@ document.querySelector('.check').addEventListener('click', function () {
 
       highScoreEl.textContent = highscore;
     }
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      message.textContent = '📈 Too High!';
+      displayMessage(guess > secretNumber ? '📈 Too High!' : '📉 Too Low!');
       score--;
       scoreEl.textContent = score;
     } else {
-      message.textContent = '😢 You Lost';
-    }
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      message.textContent = '📉 Too Low!';
-      score--;
-      scoreEl.textContent = score;
-    } else {
-      message.textContent = '😢 You Lost!';
+      displayMessage('😢 You Lost');
     }
   }
 });
@@ -53,7 +49,7 @@ playAgain.addEventListener('click', function () {
   input.value = '';
   scoreEl.textContent = score;
   secretDigit.textContent = '?';
-  message.textContent = 'Start Guessing...';
+  displayMessage('Start Guessing...');
   document.querySelector('.secretDigit').style.width = '15rem';
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 });
