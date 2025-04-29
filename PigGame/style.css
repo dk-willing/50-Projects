@@ -5,6 +5,9 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+html {
+  font-size: 62.5%;
+}
 body {
   min-height: 100vh;
   display: flex;
@@ -20,7 +23,7 @@ body {
 }
 .container {
   margin: 0 auto;
-  width: 1000px;
+  width: 100rem;
   max-width: 90%;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
@@ -44,14 +47,14 @@ body {
   transform: translate(-50%);
 }
 .player__name {
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .score {
-  font-size: 90px;
-  margin-bottom: 70px;
+  font-size: 9rem;
+  margin-bottom: 7rem;
   text-align: center;
   color: rgb(237, 30, 113);
 }
@@ -61,20 +64,20 @@ body {
   justify-content: center;
   transition: all 0.4s;
 
-  padding: 30px;
+  padding: 3rem;
 }
 .current__score__div {
   background-color: rgb(237, 30, 113);
-  padding: 20px;
+  padding: 2rem;
   text-align: center;
   margin: 0 auto;
   width: 50%;
   color: #fff;
-  font-size: 20px;
-  border-radius: 12px;
+  font-size: 2rem;
+  border-radius: 1.2rem;
 }
 .curr__score {
-  font-size: 40px;
+  font-size: 4rem;
 }
 .player__stat.active__player {
   background-color: rgb(236, 176, 219);
@@ -83,28 +86,28 @@ body {
 }
 
 .btn {
-  padding: 10px;
-  border-radius: 100px;
+  padding: 1rem;
+  border-radius: 10rem;
   border: none;
   outline: none;
   background-color: rgba(245, 241, 242, 0.856);
   text-transform: uppercase;
   cursor: pointer;
-  margin: 10px auto;
+  margin: 1rem auto;
   width: fit-content;
   box-shadow: 0 0 24px rgba(173, 172, 172, 0.553);
 }
 .btn__layout div {
   justify-content: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 }
 .bottom-btn {
   display: flex;
   flex-direction: column;
 }
 .dice-img {
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
 }
 .dice-img img {
   width: 100%;
@@ -145,10 +148,11 @@ body {
   animation: fadeIn 1s linear;
 }
 #modal p {
-  font-size: 100px;
+  font-size: 10rem;
   color: #fff;
   z-index: 2;
   font-weight: 800;
+  text-align: center;
 }
 #modal .overlay {
   position: absolute;
@@ -174,12 +178,49 @@ body {
 }
 
 @media (max-width: 600px) {
+  html {
+    font-size: 40%;
+  }
+  body {
+    height: 100vh;
+  }
   .container {
     flex-direction: column;
+    overflow: visible;
+    height: 80vh;
+  }
+
+  .player__stat.active__player {
+    background-color: #faf3f5e8;
   }
 
   .btn {
     margin: 0;
+    font-size: 2rem;
+  }
+
+  .btn--new {
+    position: absolute;
+    top: -10%;
+    left: 2%;
+  }
+
+  .dice-img {
+    position: absolute;
+    top: -12%;
+    right: 2%;
+  }
+
+  .btn--roll {
+    position: absolute;
+    bottom: -10%;
+    left: 2%;
+  }
+
+  .btn--hold {
+    position: absolute;
+    bottom: -10%;
+    right: 2%;
   }
 
   .btn__layout {
@@ -196,5 +237,17 @@ body {
 
   .bottom-btn button {
     margin: 10px 0;
+  }
+
+  .score {
+    margin-bottom: 4rem;
+  }
+
+  .current__score__div {
+    width: 70%;
+  }
+
+  .player__stat.win {
+    background-color: #b5f753f0;
   }
 }
