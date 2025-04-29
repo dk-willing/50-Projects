@@ -21,6 +21,7 @@ body {
 .container {
   margin: 0 auto;
   width: 1000px;
+  max-width: 90%;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   background-color: #ffa2b9;
@@ -97,6 +98,10 @@ body {
   justify-content: flex-end;
   margin-bottom: 30px;
 }
+.bottom-btn {
+  display: flex;
+  flex-direction: column;
+}
 .dice-img {
   width: 100px;
   height: 100px;
@@ -165,5 +170,31 @@ body {
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .btn {
+    margin: 0;
+  }
+
+  .btn__layout {
+    padding: 20px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .dice-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .bottom-btn button {
+    margin: 10px 0;
   }
 }
