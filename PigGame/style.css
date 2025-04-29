@@ -152,6 +152,7 @@ body {
   color: #fff;
   z-index: 2;
   font-weight: 800;
+  text-align: center;
 }
 #modal .overlay {
   position: absolute;
@@ -178,11 +179,15 @@ body {
 
 @media (max-width: 600px) {
   html {
-    font-size: 50%;
+    font-size: 40%;
+  }
+  body {
+    height: 100vh;
   }
   .container {
     flex-direction: column;
     overflow: visible;
+    height: 80vh;
   }
 
   .player__stat.active__player {
@@ -240,5 +245,9 @@ body {
 
   .current__score__div {
     width: 70%;
+  }
+
+  .player__stat.win {
+    background-color: #b5f753f0;
   }
 }
